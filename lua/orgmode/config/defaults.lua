@@ -1,5 +1,6 @@
 ---@class OrgConfigOpts
 local DefaultConfig = {
+  org_listitem_extra_overhang = 1,
   org_agenda_files = '',
   org_default_notes_file = '',
   org_todo_keywords = { 'TODO', '|', 'DONE' },

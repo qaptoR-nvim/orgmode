@@ -109,7 +109,7 @@ local get_matches = ts_utils.memoize_by_buf_tick(function(bufnr)
       line_nr = range.start.line + 1,
       line_end_nr = range['end'].line,
       name = query.captures[id],
-      indent = vim.fn.indent(range.start.line + 1),
+      indent = vim.fn.indent(range.start.line + config.org_listitem_extra_overhang),
     }
 
     if type == 'headline' then
@@ -129,7 +129,7 @@ local get_matches = ts_utils.memoize_by_buf_tick(function(bufnr)
       end
       if not opts.overhang then
         local bullet = node:named_child(0)
-        opts.overhang = vim.treesitter.get_node_text(bullet, bufnr):len() + 1
+        opts.overhang = vim.treesitter.get_node_text(bullet, bufnr):len() + config.org_listitem_extra_overhang
       end
 
       local parent = node:parent()
